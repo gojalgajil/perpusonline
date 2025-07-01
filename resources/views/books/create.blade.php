@@ -14,7 +14,7 @@
         </div>
     @endif
 
-    <form method="POST" action="{{ route('books.store') }}" class="space-y-4 bg-white p-6 rounded-lg shadow border border-gray-200">
+    <form method="POST" action="{{ route('books.store') }}" enctype="multipart/form-data" class="space-y-4 bg-white p-6 rounded-lg shadow border border-gray-200">
         @csrf
 
         <div>
@@ -40,6 +40,16 @@
         <div>
             <label for="description" class="block font-medium text-sm text-gray-700">Deskripsi</label>
             <textarea name="description" id="description" rows="3" required class="w-full mt-1 px-3 py-2 border rounded-md shadow-sm focus:ring focus:ring-blue-200"></textarea>
+        </div>
+
+        <div>
+            <label for="cover" class="block text-sm font-medium text-gray-700">Upload Cover (JPG/PNG)</label>
+            <input type="file" name="cover" id="cover" accept="image/*" class="w-full mt-1 border rounded-md px-3 py-2 shadow-sm focus:ring focus:ring-blue-200">
+        </div>
+
+        <div>
+            <label for="pdf" class="block font-medium text-sm text-gray-700">Upload PDF (Opsional)</label>
+            <input type="file" name="pdf" id="pdf" accept="application/pdf" class="w-full mt-1 border rounded-md px-3 py-2 shadow-sm focus:ring focus:ring-blue-200">
         </div>
 
         <div>

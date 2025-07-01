@@ -14,7 +14,7 @@
         </div>
     @endif
 
-    <form method="POST" action="{{ route('books.update', $book) }}" class="space-y-4 bg-white p-6 rounded-lg shadow border border-gray-200">
+    <form method="POST" action="{{ route('books.update', $book) }}" enctype="multipart/form-data" class="space-y-4 bg-white p-6 rounded-lg shadow border border-gray-200">
         @csrf
         @method('PUT')
 
@@ -42,6 +42,25 @@
             <label for="description" class="block font-medium text-sm text-gray-700">Deskripsi</label>
             <textarea name="description" id="description" rows="3" class="w-full mt-1 px-3 py-2 border rounded-md shadow-sm focus:ring focus:ring-blue-200">{{ old('description', $book->description) }}</textarea>
         </div>
+
+        <div>
+            <label for="cover" class="block text-sm font-medium text-gray-700">Upload Cover (JPG/PNG)</label>
+            <input type="file" name="cover" id="cover" accept="image/*" class="w-full mt-1 border rounded-md px-3 py-2 shadow-sm focus:ring focus:ring-blue-200">
+        </div>
+
+        <div>
+            <label for="pdf" class="block font-medium text-sm text-gray-700">Ganti PDF (Opsional)</label>
+            <input type="file" name="pdf" id="pdf" accept="application/pdf" class="w-full mt-1 border rounded-md px-3 py-2 shadow-sm focus:ring focus:ring-blue-200">
+        </div>
+
+        @if ($book->pdf)
+            <div>
+                <span class="text-sm text-gray-600">File PDF saat ini:</span>
+                <a href="{{ asset('storage/' . $book->pdf) }}" target="_blank" class="text-blue-600 hover:underline text-sm">
+                    📄 Lihat / Download PDF
+                </a>
+            </div>
+        @endif
 
         <div>
             <button type="submit" class="px-4 py-2 bg-blue-600 text-white rounded hover:bg-blue-700 transition">

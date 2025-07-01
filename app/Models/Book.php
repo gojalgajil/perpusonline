@@ -13,5 +13,7 @@ class Book extends Model
         'publisher',
         'year',
         'description',
+        'pdf',
+        'cover',
     ];
 }
